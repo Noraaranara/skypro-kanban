@@ -1,66 +1,118 @@
-import Column from "../Column/Column"
+import Column from '../Column/Column';
+import React from 'react';
 
 function Main() {
     const columns = [
         {
-            title: "Без статуса",
+            title: 'Без статуса',
             cards: [
-                { title: "Название задачи", date: "30.10.23", theme: "_orange", name: "Web Design" },
-                { title: "Название задачи", date: "30.10.23", theme: "_green", name: "Research" },
-                { title: "Название задачи", date: "30.10.23", theme: "_orange", name: "Web Design" },
-                { title: "Название задачи", date: "30.10.23", theme: "_purple", name: "Copywriting" },
-                { title: "Название задачи", date: "30.10.23", theme: "_green", name: "Research" }
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_orange',
+                    name: 'Web Design',
+                },
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_green',
+                    name: 'Research',
+                },
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_orange',
+                    name: 'Web Design',
+                },
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_purple',
+                    name: 'Copywriting',
+                },
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_green',
+                    name: 'Research',
+                },
             ],
         },
         {
-            title: "Нужно сделать",
+            title: 'Нужно сделать',
             cards: [
-                { title: "Название задачи", date: "30.10.23", theme: "_green", name: "Research" },
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_green',
+                    name: 'Research',
+                },
             ],
         },
         {
-        title: "В работе",
+            title: 'В работе',
             cards: [
-                { title: "Название задачи", date: "30.10.23", theme: "_green", name: "Research" },
-                { title: "Название задачи", date: "30.10.23", theme: "_purple", name: "Copywriting" },
-                { title: "Название задачи", date: "30.10.23", theme: "_orange", name: "Web Design" },
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_green',
+                    name: 'Research',
+                },
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_purple',
+                    name: 'Copywriting',
+                },
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_orange',
+                    name: 'Web Design',
+                },
             ],
         },
         {
-            title: "Тестирование",
+            title: 'Тестирование',
             cards: [
-                { title: "Название задачи", date: "30.10.23", theme: "_green", name: "Research" },
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_green',
+                    name: 'Research',
+                },
             ],
         },
         {
-            title: "Готово",
+            title: 'Готово',
             cards: [
-                { title: "Название задачи", date: "30.10.23", theme: "_green", name: "Research" },
+                {
+                    title: 'Название задачи',
+                    date: '30.10.23',
+                    theme: '_green',
+                    name: 'Research',
+                },
             ],
         },
-    ]
+    ];
 
     return (
         <main className="main">
             <div className="container">
                 <div className="main__block">
-
-                <div className="main__content">
-
-                    {columns.map((column, index) => (
-                    <Column
-                        key={index}
-                        title={column.title}
-                        cards={column.cards}
-                    />
-                    ))}
-
-                </div>
-
+                    <div className="main__content">
+                        {columns.map((column, index) => (
+                            <Column
+                                key={index}
+                                title={column.title}
+                                cards={column.cards}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </main>
-    )
+    );
 }
 
-export default Main
+export default Main;
