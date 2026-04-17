@@ -247,7 +247,7 @@ body {
   background: #EAEEF6;
   outline: none;
   -webkit-appearance: none;
-     -moz-appearance: none;
+    -moz-appearance: none;
           appearance: none;
 }
 .pop-user-set__theme input[type=checkbox]::before {
@@ -681,6 +681,7 @@ body {
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
+  color: white;
 }
 
 ._btn-bor {
@@ -689,6 +690,11 @@ body {
   outline: none;
   background: transparent;
   color: #565EEF;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 10px;
+  letter-spacing: -1%;
 }
 ._btn-bor a {
   color: #565EEF;
@@ -700,6 +706,9 @@ body {
   border: none;
   outline: none;
   color: #FFFFFF;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 10px;
 }
 ._btn-bg a {
   color: #FFFFFF;
