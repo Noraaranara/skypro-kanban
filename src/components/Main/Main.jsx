@@ -1,5 +1,4 @@
 import Column from '../Column/Column';
-import React from 'react';
 
 function Main() {
     const columns = [
