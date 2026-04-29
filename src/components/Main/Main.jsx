@@ -1,117 +1,35 @@
+import cardList from '../../data';
 import Column from '../Column/Column';
+import Loader from '../Loader/Loader';
 
-function Main() {
-    const columns = [
-        {
-            title: 'Без статуса',
-            cards: [
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_orange',
-                    name: 'Web Design',
-                },
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_green',
-                    name: 'Research',
-                },
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_orange',
-                    name: 'Web Design',
-                },
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_purple',
-                    name: 'Copywriting',
-                },
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_green',
-                    name: 'Research',
-                },
-            ],
-        },
-        {
-            title: 'Нужно сделать',
-            cards: [
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_green',
-                    name: 'Research',
-                },
-            ],
-        },
-        {
-            title: 'В работе',
-            cards: [
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_green',
-                    name: 'Research',
-                },
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_purple',
-                    name: 'Copywriting',
-                },
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_orange',
-                    name: 'Web Design',
-                },
-            ],
-        },
-        {
-            title: 'Тестирование',
-            cards: [
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_green',
-                    name: 'Research',
-                },
-            ],
-        },
-        {
-            title: 'Готово',
-            cards: [
-                {
-                    title: 'Название задачи',
-                    date: '30.10.23',
-                    theme: '_green',
-                    name: 'Research',
-                },
-            ],
-        },
-    ];
+function Main({ loading }) {
+  const columns = [
+    { title: 'Без статуса', status: 'Без статуса' },
+    { title: 'Нужно сделать', status: 'Нужно сделать' },
+    { title: 'В работе', status: 'В работе' },
+    { title: 'Тестирование', status: 'Тестирование' },
+    { title: 'Готово', status: 'Готово' },
+  ];
 
-    return (
-        <main className="main">
-            <div className="container">
-                <div className="main__block">
-                    <div className="main__content">
-                        {columns.map((column, index) => (
-                            <Column
-                                key={index}
-                                title={column.title}
-                                cards={column.cards}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </main>
-    );
+  return loading ? (
+    <Loader />
+  ) : (
+    <main className="main">
+      <div className="container">
+        <div className="main__block">
+          <div className="main__content">
+            {columns.map((column) => (
+              <Column
+                key={column.status}
+                title={column.title}
+                cards={cardList.filter((card) => card.status === column.status)}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </main>
+  );
 }
 
 export default Main;

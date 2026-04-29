@@ -1,99 +1,95 @@
-import Calendar from "../Calendar/Calendar"
+import Calendar from '../Calendar/Calendar';
 
 function PopBrowse() {
-    return (
-        <div className="pop-browse" id="popBrowse">
-            <div className="pop-browse__container">
-                <div className="pop-browse__block">
-                    <div className="pop-browse__content">
+  return (
+    <div className="pop-browse" id="popBrowse">
+      <div className="pop-browse__container">
+        <div className="pop-browse__block">
+          <div className="pop-browse__content">
+            {/* 🔥 1. Верхняя часть */}
+            <div className="pop-browse__top-block">
+              <h3 className="pop-browse__ttl">Название задачи</h3>
 
-                        {/* 🔥 1. Верхняя часть */}
-                        <div className="pop-browse__top-block">
-                        <h3 className="pop-browse__ttl">Название задачи</h3>
-
-                        <div className="categories__theme theme-top _orange _active-category">
-                            <p className="_orange">Web Design</p>
-                        </div>
-                        </div>
-
-                        {/* 🔥 2. Статус */}
-                        <div className="pop-browse__status status">
-                            <p className="status__p subttl">Статус</p>
-
-                            <div className="status__themes">
-                                <div className="status__theme _hide">
-                                    <p>Без статуса</p>
-                                </div>
-
-                                <div className="status__theme _gray">
-                                    <p>Нужно сделать</p>
-                                </div>
-
-                                <div className="status__theme _hide">
-                                    <p>В работе</p>
-                                </div>
-
-                                <div className="status__theme _hide">
-                                    <p>Тестирование</p>
-                                </div>
-
-                                <div className="status__theme _hide">
-                                    <p>Готово</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* 🔥 3. Описание */}
-                        <div className="pop-browse__wrap">
-                            <form className="pop-browse__form form-browse">
-                                <div className="form-browse__block">
-                                    <label>Описание задачи</label>
-
-                                    <textarea
-                                        className="form-browse__area"
-                                        readOnly
-                                        placeholder="Введите описание задачи..."
-                                    />
-                                </div>
-                            </form>
-
-                            {/* 🔥 4. Календарь */}
-                            <Calendar />
-                        </div>
-
-                        {/* 🔥 5. Категория */}
-                        <div className="theme-down__categories theme-down">
-                        <p className="categories__p subttl">Категория</p>
-
-                        <div className="categories__theme _orange _active-category">
-                            <p>Web Design</p>
-                        </div>
-                        </div>
-
-                        {/* 🔥 6. КНОПКИ */}
-                        <div className="pop-browse__btn-browse">
-
-                        <div className="btn-group">
-                            <button className="btn-browse__edit _btn-bor _hover03">
-                            Редактировать задачу
-                            </button>
-
-                            <button className="btn-browse__delete _btn-bor _hover03">
-                            Удалить задачу
-                            </button>
-                        </div>
-
-                        <button className="btn-browse__close _btn-bg _hover01">
-                            Закрыть
-                        </button>
-
-                        </div>
-
-                    </div>
-                </div>
+              <div className="categories__theme theme-top _orange _active-category">
+                <p className="_orange">Web Design</p>
+              </div>
             </div>
+
+            {/* 🔥 2. Статус */}
+            <div className="pop-browse__status status">
+              <p className="status__p subttl">Статус</p>
+
+              <div className="status__themes">
+                <div className="status__theme _hide">
+                  <p>Без статуса</p>
+                </div>
+
+                <div className="status__theme _gray">
+                  <p>Нужно сделать</p>
+                </div>
+
+                <div className="status__theme _hide">
+                  <p>В работе</p>
+                </div>
+
+                <div className="status__theme _hide">
+                  <p>Тестирование</p>
+                </div>
+
+                <div className="status__theme _hide">
+                  <p>Готово</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 🔥 3. Описание */}
+            <div className="pop-browse__wrap">
+              <form className="pop-browse__form form-browse">
+                <div className="form-browse__block">
+                  <label>Описание задачи</label>
+
+                  <textarea
+                    className="form-browse__area"
+                    readOnly
+                    placeholder="Введите описание задачи..."
+                  />
+                </div>
+              </form>
+
+              {/* 🔥 4. Календарь */}
+              <Calendar />
+            </div>
+
+            {/* 🔥 5. Категория */}
+            <div className="theme-down__categories theme-down">
+              <p className="categories__p subttl">Категория</p>
+
+              <div className="categories__theme _orange _active-category">
+                <p>Web Design</p>
+              </div>
+            </div>
+
+            {/* 🔥 6. КНОПКИ */}
+            <div className="pop-browse__btn-browse">
+              <div className="btn-group">
+                <button className="btn-browse__edit _btn-bor _hover03">
+                  Редактировать задачу
+                </button>
+
+                <button className="btn-browse__delete _btn-bor _hover03">
+                  Удалить задачу
+                </button>
+              </div>
+
+              <button className="btn-browse__close _btn-bg _hover01">
+                Закрыть
+              </button>
+            </div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default PopBrowse
+export default PopBrowse;
