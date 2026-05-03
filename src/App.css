@@ -786,7 +786,7 @@ body {
   padding: 0;
 }
 .header__pop-user-set {
-  display: none;
+  display: block;
   position: absolute;
   top: 61px;
   right: 0;
@@ -916,6 +916,12 @@ body {
   line-height: 13px;
   color: #94A6BE;
   letter-spacing: 0.2px;
+}
+
+.loader {
+  text-align: center;
+  padding-top: 100px;
+  color: #94A6BE;
 }
 
 @media screen and (max-width: 1200px) {
