@@ -1,6 +1,7 @@
 import cardList from '../../data';
 import Column from '../Column/Column';
 import Loader from '../Loader/Loader';
+import { Block, Container, Content, MainEl } from './Main.styled';
 
 function Main({ loading }) {
   const columns = [
@@ -14,10 +15,10 @@ function Main({ loading }) {
   return loading ? (
     <Loader />
   ) : (
-    <main className="main">
-      <div className="container">
-        <div className="main__block">
-          <div className="main__content">
+    <MainEl>
+      <Container>
+        <Block>
+          <Content>
             {columns.map((column) => (
               <Column
                 key={column.status}
@@ -25,10 +26,10 @@ function Main({ loading }) {
                 cards={cardList.filter((card) => card.status === column.status)}
               />
             ))}
-          </div>
-        </div>
-      </div>
-    </main>
+          </Content>
+        </Block>
+      </Container>
+    </MainEl>
   );
 }
 
