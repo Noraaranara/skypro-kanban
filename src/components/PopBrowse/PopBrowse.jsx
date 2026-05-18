@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import Calendar from '../Calendar/Calendar';
+import { ROUTER } from '../../router/router';
 
 function PopBrowse() {
   return (
@@ -6,7 +8,6 @@ function PopBrowse() {
       <div className="pop-browse__container">
         <div className="pop-browse__block">
           <div className="pop-browse__content">
-            {/* 🔥 1. Верхняя часть */}
             <div className="pop-browse__top-block">
               <h3 className="pop-browse__ttl">Название задачи</h3>
 
@@ -15,7 +16,6 @@ function PopBrowse() {
               </div>
             </div>
 
-            {/* 🔥 2. Статус */}
             <div className="pop-browse__status status">
               <p className="status__p subttl">Статус</p>
 
@@ -42,7 +42,6 @@ function PopBrowse() {
               </div>
             </div>
 
-            {/* 🔥 3. Описание */}
             <div className="pop-browse__wrap">
               <form className="pop-browse__form form-browse">
                 <div className="form-browse__block">
@@ -56,11 +55,9 @@ function PopBrowse() {
                 </div>
               </form>
 
-              {/* 🔥 4. Календарь */}
               <Calendar />
             </div>
 
-            {/* 🔥 5. Категория */}
             <div className="theme-down__categories theme-down">
               <p className="categories__p subttl">Категория</p>
 
@@ -69,7 +66,6 @@ function PopBrowse() {
               </div>
             </div>
 
-            {/* 🔥 6. КНОПКИ */}
             <div className="pop-browse__btn-browse">
               <div className="btn-group">
                 <button className="btn-browse__edit _btn-bor _hover03">
@@ -81,9 +77,12 @@ function PopBrowse() {
                 </button>
               </div>
 
-              <button className="btn-browse__close _btn-bg _hover01">
+              <Link
+                to={ROUTER.main}
+                className="btn-browse__close _btn-bg _hover01"
+              >
                 Закрыть
-              </button>
+              </Link>
             </div>
           </div>
         </div>

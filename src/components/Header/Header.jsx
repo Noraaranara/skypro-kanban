@@ -9,6 +9,8 @@ import {
   Nav,
   User,
 } from './Header.styled';
+import { Link } from 'react-router-dom';
+import { ROUTER } from '../../router/router';
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -28,7 +30,7 @@ function Header() {
           </Logo>
           <Nav>
             <Btn id="btnMainNew">
-              <a href="#popNewCard">Создать новую задачу</a>
+              <Link to={ROUTER.newCard}>Создать новую задачу</Link>
             </Btn>
             <User href="#" onClick={() => setOpen(!open)}>
               Ivan Ivanov

@@ -39,7 +39,7 @@ html,
 body {
   width: 100%;
   height: 100%;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
   color: #000000;
 }
 
@@ -48,21 +48,19 @@ body {
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
 }
-
 
 ._hover01:hover {
   background-color: #33399b;
 }
 
-
 ._hover03:hover {
   background-color: #33399b;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 ._hover03:hover a {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .pop-user-set:target,
@@ -71,8 +69,6 @@ body {
 .pop-browse:target {
   display: block;
 }
-
-
 
 ._active-category {
   opacity: 1 !important;
@@ -109,12 +105,12 @@ body {
 .pop-exit__block {
   display: block;
   margin: 0 auto;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   max-width: 370px;
   width: 100%;
   padding: 50px 60px;
   border-radius: 10px;
-  border: 0.7px solid #D4DBE5;
+  border: 0.7px solid #d4dbe5;
   box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
 }
 .pop-exit__ttl h2 {
@@ -128,7 +124,7 @@ body {
 .pop-exit__exit-yes {
   width: 153px;
   height: 30px;
-  background-color: #565EEF;
+  background-color: #565eef;
   border-radius: 4px;
   border: none;
   outline: none;
@@ -139,13 +135,13 @@ body {
   line-height: 21px;
   font-weight: 500;
   letter-spacing: -0.14px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-right: 10px;
 }
 .pop-exit__exit-yes a {
   width: 100%;
   height: 100%;
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,7 +151,7 @@ body {
   height: 30px;
   background-color: transparent;
   border-radius: 4px;
-  border: 0.7px solid var(--palette-navy-60, #565EEF);
+  border: 0.7px solid var(--palette-navy-60, #565eef);
   outline: none;
   display: flex;
   align-items: center;
@@ -164,12 +160,12 @@ body {
   line-height: 21px;
   font-weight: 500;
   letter-spacing: -0.14px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .pop-exit__exit-no a {
   width: 100%;
   height: 100%;
-  color: #565EEF;
+  color: #565eef;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -185,16 +181,15 @@ body {
   width: 72px;
   height: 30px;
   background: transparent;
-  color: #565EEF;
+  color: #565eef;
   border-radius: 4px;
-  border: 1px solid #565EEF;
+  border: 1px solid #565eef;
 }
 .pop-user-set button a {
-  color: #565EEF;
+  color: #565eef;
 }
 
 .pop-new-card {
-  display: none;
   width: 100%;
   min-width: 375px;
   height: 100%;
@@ -218,12 +213,12 @@ body {
 .pop-new-card__block {
   display: block;
   margin: 0 auto;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   max-width: 630px;
   width: 100%;
   padding: 40px 30px 48px;
   border-radius: 10px;
-  border: 0.7px solid #D4DBE5;
+  border: 0.7px solid #d4dbe5;
   position: relative;
 }
 .pop-new-card__content {
@@ -241,7 +236,7 @@ body {
   position: absolute;
   top: 20px;
   right: 30px;
-  color: #94A6BE;
+  color: #94a6be;
   cursor: pointer;
 }
 .pop-new-card__close:hover {
@@ -263,7 +258,8 @@ body {
   display: flex;
   flex-direction: column;
 }
-.form-new__input, .form-new__area {
+.form-new__input,
+.form-new__area {
   width: 100%;
   outline: none;
   padding: 14px;
@@ -274,18 +270,20 @@ body {
   line-height: 1;
   letter-spacing: -0.14px;
 }
-.form-new__input::-moz-placeholder, .form-new__area::-moz-placeholder {
+.form-new__input::-moz-placeholder,
+.form-new__area::-moz-placeholder {
   font-weight: 400;
   font-size: 14px;
   line-height: 1px;
-  color: #94A6BE;
+  color: #94a6be;
   letter-spacing: -0.14px;
 }
-.form-new__input::placeholder, .form-new__area::placeholder {
+.form-new__input::placeholder,
+.form-new__area::placeholder {
   font-weight: 400;
   font-size: 14px;
   line-height: 1px;
-  color: #94A6BE;
+  color: #94a6be;
   letter-spacing: -0.14px;
 }
 .form-new__input {
@@ -299,14 +297,14 @@ body {
 .form-new__create {
   width: 132px;
   height: 30px;
-  background-color: #565EEF;
+  background-color: #565eef;
   border-radius: 4px;
   border: 0;
   outline: none;
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
-  color: #FFFFFF;
+  color: #ffffff;
   float: right;
 }
 
@@ -317,10 +315,9 @@ body {
   line-height: 1;
 }
 
-
 ._cell-day:hover {
-  color: #94A6BE;
-  background-color: #EAEEF6;
+  color: #94a6be;
+  background-color: #eaeef6;
 }
 
 .categories {
@@ -352,7 +349,7 @@ body {
 }
 
 .pop-browse {
-  display: none;
+  /* display: none; */
   width: 100%;
   height: 100%;
   min-width: 375px;
@@ -376,12 +373,12 @@ body {
 .pop-browse__block {
   display: block;
   margin: 0 auto;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   max-width: 630px;
   width: 100%;
   padding: 40px 30px 38px;
   border-radius: 10px;
-  border: 0.7px solid #D4DBE5;
+  border: 0.7px solid #d4dbe5;
   position: relative;
 }
 .pop-browse__content {
@@ -421,18 +418,21 @@ body {
   display: block;
   margin-bottom: 20px;
 }
-.pop-browse__btn-browse, .pop-browse__btn-edit {
+.pop-browse__btn-browse,
+.pop-browse__btn-edit {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
 }
-.pop-browse__btn-browse button, .pop-browse__btn-edit button {
+.pop-browse__btn-browse button,
+.pop-browse__btn-edit button {
   height: 30px;
   margin-bottom: 10px;
   padding: 0 14px;
 }
-.pop-browse__btn-browse .btn-group button, .pop-browse__btn-edit .btn-group button {
+.pop-browse__btn-browse .btn-group button,
+.pop-browse__btn-edit .btn-group button {
   margin-right: 8px;
 }
 
@@ -445,7 +445,7 @@ body {
   width: 100%;
   outline: none;
   padding: 14px;
-  background: #EAEEF6;
+  background: #eaeef6;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   border-radius: 8px;
   font-size: 14px;
@@ -458,14 +458,14 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 1px;
-  color: #94A6BE;
+  color: #94a6be;
   letter-spacing: -0.14px;
 }
 .form-browse__area::placeholder {
   font-weight: 400;
   font-size: 14px;
   line-height: 1px;
-  color: #94A6BE;
+  color: #94a6be;
   letter-spacing: -0.14px;
 }
 
@@ -484,7 +484,7 @@ body {
 .status__theme {
   border-radius: 24px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
-  color: #94A6BE;
+  color: #94a6be;
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
@@ -498,32 +498,37 @@ body {
 
 ._btn-bor {
   border-radius: 4px;
-  border: 0.7px solid var(--palette-navy-60, #565EEF);
+  border: 0.7px solid var(--palette-navy-60, #565eef);
   outline: none;
   background: transparent;
-  color: #565EEF;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  color: #565eef;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 10px;
   letter-spacing: -1%;
 }
 ._btn-bor a {
-  color: #565EEF;
+  color: #565eef;
 }
 
 ._btn-bg {
   border-radius: 4px;
-  background: #565EEF;
+  background: #565eef;
   border: none;
   outline: none;
-  color: #FFFFFF;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 10px;
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
 }
-._btn-bg a {
-  color: #FFFFFF;
+._btn-bg Link {
+  color: #ffffff;
 }
 
 ._hide {
@@ -534,19 +539,17 @@ body {
   display: none;
 }
 
-
 .loader {
   text-align: center;
   padding-top: 100px;
-  color: #94A6BE;
+  color: #94a6be;
 }
 
 @media screen and (max-width: 1200px) {
-
   .cards__card {
     width: 220px;
     height: 130px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -569,14 +572,14 @@ body {
   .pop-new-card__wrap {
     display: block;
   }
-   .calendar__nav {
+  .calendar__nav {
     padding: 0;
   }
   .calendar .date-create {
     display: none;
     margin-bottom: 7px;
   }
- 
+
   .pop-browse {
     top: 70px;
   }
@@ -631,14 +634,17 @@ body {
   .pop-browse__calendar {
     width: 100%;
   }
-  .pop-browse__btn-browse button, .pop-browse__btn-edit button {
+  .pop-browse__btn-browse button,
+  .pop-browse__btn-edit button {
     width: 100%;
     height: 40px;
   }
-  .pop-browse__btn-browse .btn-group, .pop-browse__btn-edit .btn-group {
+  .pop-browse__btn-browse .btn-group,
+  .pop-browse__btn-edit .btn-group {
     width: 100%;
   }
-  .pop-browse__btn-browse .btn-group button, .pop-browse__btn-edit .btn-group button {
+  .pop-browse__btn-browse .btn-group button,
+  .pop-browse__btn-edit .btn-group button {
     margin-right: 0px;
   }
   .form-browse__area {

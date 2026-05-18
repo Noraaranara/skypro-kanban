@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { ROUTER } from '../../router/router';
 import {
   Item,
   Cards,
@@ -27,13 +29,13 @@ function Card({ title, date, theme, topic }) {
               <p>{topic}</p>
             </Theme>
           </Group>
-          <a href="#popBrowse" target="_self">
+          <Link to={ROUTER.popCard} target="_self">
             <Btn>
               <div></div>
               <div></div>
               <div></div>
             </Btn>
-          </a>
+          </Link>
         </Group>
 
         <Content>
