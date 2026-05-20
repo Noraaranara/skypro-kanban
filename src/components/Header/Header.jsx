@@ -1,52 +1,43 @@
 import { useState } from 'react';
+import PopUser from '../PopUser/PopUser';
+import {
+  Block,
+  Btn,
+  Container,
+  HeaderEl,
+  Logo,
+  Nav,
+  User,
+} from './Header.styled';
 
 function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__block">
-          <div className="header__logo _show _light">
+    <HeaderEl>
+      <Container>
+        <Block>
+          <Logo>
             <a href="" target="_self">
               <img src="images/logo.png" alt="logo" />
             </a>
-          </div>
-          <div className="header__logo _dark">
+          </Logo>
+          <Logo $dark>
             <a href="" target="_self">
               <img src="images/logo_dark.png" alt="logo" />
             </a>
-          </div>
-          <nav className="header__nav">
-            <button className="header__btn-main-new _hover01" id="btnMainNew">
+          </Logo>
+          <Nav>
+            <Btn id="btnMainNew">
               <a href="#popNewCard">Создать новую задачу</a>
-            </button>
-            <a
-              href="#"
-              className="header__user _hover02"
-              onClick={() => setOpen(!open)}
-            >
+            </Btn>
+            <User href="#" onClick={() => setOpen(!open)}>
               Ivan Ivanov
-            </a>
-            {open && (
-              <div
-                className="header__pop-user-set pop-user-set"
-                id="user-set-target"
-              >
-                <p className="pop-user-set__name">Ivan Ivanov</p>
-                <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                <div className="pop-user-set__theme">
-                  <p>Темная тема</p>
-                  <input type="checkbox" className="checkbox" name="checkbox" />
-                </div>
-                <button type="button" className="_hover03">
-                  <a href="#popExit">Выйти</a>
-                </button>
-              </div>
-            )}
-          </nav>
-        </div>
-      </div>
-    </header>
+            </User>
+            {open && <PopUser />}
+          </Nav>
+        </Block>
+      </Container>
+    </HeaderEl>
   );
 }
 
