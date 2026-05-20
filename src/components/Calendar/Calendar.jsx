@@ -1,20 +1,3 @@
-import {
-  Action,
-  Actions,
-  Block,
-  Cell,
-  Cells,
-  Content,
-  Day,
-  Days,
-  Item,
-  Month,
-  Nav,
-  Paragraph,
-  Period,
-  Title,
-} from './Calendar.styled';
-
 function Calendar() {
   return (
     <div className=" calendar">
