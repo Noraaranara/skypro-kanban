@@ -4,7 +4,7 @@ import { Block, Btn, Container, HeaderEl, Logo, Nav } from './Header.styled';
 import { Link } from 'react-router-dom';
 import { ROUTER } from '../../router/router';
 
-function Header() {
+function Header({ setIsAuth }) {
   const [open, setOpen] = useState(false);
   return (
     <HeaderEl>

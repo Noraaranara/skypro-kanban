@@ -1,8 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Calendar from '../Calendar/Calendar';
 import { ROUTER } from '../../router/router';
+import { useMemo } from 'react';
+import cardList from '../../data';
 
 function PopBrowse() {
+  const { id } = useParams();
+  const CardId = useMemo(
+    () => cardList.find((card) => card.id === id) || {},
+    [id],
+  );
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">

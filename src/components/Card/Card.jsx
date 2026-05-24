@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ROUTER } from '../../router/router';
 import {
   Item,
@@ -10,6 +10,8 @@ import {
   Title,
   Date,
 } from './Card.styled';
+import { useMemo } from 'react';
+import cardList from '../../data';
 
 function Card({ title, date, theme, topic }) {
   const themeClassMap = {
@@ -29,7 +31,7 @@ function Card({ title, date, theme, topic }) {
               <p>{topic}</p>
             </Theme>
           </Group>
-          <Link to={ROUTER.popCard} target="_self">
+          <Link to={`${ROUTER.popCard}`} target="_self">
             <Btn>
               <div></div>
               <div></div>
