@@ -22,7 +22,10 @@ export const AppRoutes = () => {
           >
             <Route path={ROUTER.newCard} element={<PopNewCardPage />} />
             <Route path={ROUTER.popCardDynamic} element={<PopBrowsePage />} />
-            <Route path={ROUTER.popExit} element={<PopExitPage />} />
+            <Route
+              path={ROUTER.popExit}
+              element={<PopExitPage setIsAuth={setIsAuth} />}
+            />
           </Route>
         </Route>
         <Route
