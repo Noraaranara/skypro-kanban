@@ -13,7 +13,7 @@ import {
 import { useMemo } from 'react';
 import cardList from '../../data';
 
-function Card({ title, date, theme, topic }) {
+function Card({ id, title, date, theme, topic }) {
   const themeClassMap = {
     'At home': '_orange',
     Work: '_green',
@@ -31,7 +31,7 @@ function Card({ title, date, theme, topic }) {
               <p>{topic}</p>
             </Theme>
           </Group>
-          <Link to={`${ROUTER.popCard}`} target="_self">
+          <Link to={`${ROUTER.popCard}${id}`} target="_self">
             <Btn>
               <div></div>
               <div></div>

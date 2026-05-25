@@ -1,6 +1,7 @@
 export const ROUTER = {
   main: '/',
-  popCard: '/card/:id',
+  popCard: '/card/',
+  popCardDynamic: '/card/:id',
   newCard: '/card/add',
   popExit: '/exit',
   notFound: '*',
