@@ -1,5 +1,8 @@
+import { useParams } from 'react-router-dom';
+import cardList from '../../data';
 import Card from '../Card/Card';
 import { Cards, Columns, Title } from './Column.styled';
+import { useMemo } from 'react';
 
 function Column({ title, cards }) {
   return (
@@ -9,9 +12,10 @@ function Column({ title, cards }) {
       </Title>
 
       <Cards>
-        {cards.map((card, index) => (
+        {cards.map((card) => (
           <Card
             key={card.id}
+            id={card.id}
             title={card.title}
             date={card.date}
             theme={card.theme}

@@ -1,3 +1,5 @@
+import { Link, useParams } from 'react-router-dom';
+import { ROUTER } from '../../router/router';
 import {
   Item,
   Cards,
@@ -8,8 +10,10 @@ import {
   Title,
   Date,
 } from './Card.styled';
+import { useMemo } from 'react';
+import cardList from '../../data';
 
-function Card({ title, date, theme, topic }) {
+function Card({ id, title, date, theme, topic }) {
   const themeClassMap = {
     'At home': '_orange',
     Work: '_green',
@@ -27,13 +31,13 @@ function Card({ title, date, theme, topic }) {
               <p>{topic}</p>
             </Theme>
           </Group>
-          <a href="#popBrowse" target="_self">
+          <Link to={`${ROUTER.popCard}${id}`} target="_self">
             <Btn>
               <div></div>
               <div></div>
               <div></div>
             </Btn>
-          </a>
+          </Link>
         </Group>
 
         <Content>

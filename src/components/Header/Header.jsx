@@ -1,16 +1,10 @@
 import { useState } from 'react';
 import PopUser from '../PopUser/PopUser';
-import {
-  Block,
-  Btn,
-  Container,
-  HeaderEl,
-  Logo,
-  Nav,
-  User,
-} from './Header.styled';
+import { Block, Btn, Container, HeaderEl, Logo, Nav } from './Header.styled';
+import { Link } from 'react-router-dom';
+import { ROUTER } from '../../router/router';
 
-function Header() {
+function Header({ setIsAuth }) {
   const [open, setOpen] = useState(false);
   return (
     <HeaderEl>
@@ -28,11 +22,15 @@ function Header() {
           </Logo>
           <Nav>
             <Btn id="btnMainNew">
-              <a href="#popNewCard">Создать новую задачу</a>
+              <Link to={ROUTER.newCard}>Создать новую задачу</Link>
             </Btn>
-            <User href="#" onClick={() => setOpen(!open)}>
+            <a
+              href="#"
+              className="header__user _hover02"
+              onClick={() => setOpen(!open)}
+            >
               Ivan Ivanov
-            </User>
+            </a>
             {open && <PopUser />}
           </Nav>
         </Block>
