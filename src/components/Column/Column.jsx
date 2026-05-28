@@ -14,12 +14,11 @@ function Column({ title, cards }) {
       <Cards>
         {cards.map((card) => (
           <Card
-            key={card.id}
-            id={card.id}
+            key={card._id}
+            id={card._id}
             title={card.title}
             date={card.date}
-            theme={card.theme}
-            topic={card.theme}
+            topic={card.topic}
           />
         ))}
       </Cards>

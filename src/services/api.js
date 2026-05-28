@@ -9,7 +9,7 @@ export async function fetchCard({ token }) {
         Authorization: 'Bearer ' + token,
       },
     });
-    return data.data.cards;
+    return data.data.tasks;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -23,7 +23,7 @@ export async function postCard({ token, card }) {
         'Content-Type': '',
       },
     });
-    return data.data.cards;
+    return data.data.tasks;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -50,7 +50,7 @@ export async function editCard({ token, id, card }) {
         'Content-Type': '',
       },
     });
-    return data.data.cards;
+    return data.data.tasks;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -64,7 +64,7 @@ export async function deleteCard({ token, id }) {
         'Content-Type': 'text',
       },
     });
-    return data.data.cards;
+    return data.data.tasks;
   } catch (error) {
     throw new Error(error.message);
   }

@@ -79,7 +79,8 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
 
       if (data) {
         setIsAuth(true);
-        localStorage.setItem('userInfo', JSON.stringify(data));
+        const { password, ...safeUserData } = data;
+        localStorage.setItem('userInfo', JSON.stringify(safeUserData));
         navigate(ROUTER.main);
       }
     } catch (err) {
