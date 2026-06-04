@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import cardList from '../../data';
 import Column from '../Column/Column';
 import Loader from '../Loader/Loader';
@@ -7,7 +7,8 @@ import Header from '../Header/Header';
 import PopBrowse from '../PopBrowse/PopBrowse';
 import PopNewCard from '../PopNewCard/PopNewCard';
 import PopUser from '../PopUser/PopUser';
-import { Outlet } from 'react-router-dom';
+import { data, Outlet } from 'react-router-dom';
+import { fetchCard } from '../../services/api';
 
 function Main() {
   const columns = [
@@ -19,12 +20,28 @@ function Main() {
   ];
 
   const [loading, setLoading] = useState(true);
+  const [card, setCard] = useState([]);
+  const [error, setError] = useState('');
+
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
+  const getCard = useCallback(async () => {
+    try {
+      setLoading(true);
+      const data = await fetchCard({
+        token: userInfo.token,
+      });
+      if (data) setCard(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [userInfo.token]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
+    getCard();
+  }, [getCard]);
 
   return loading ? (
     <Loader />
@@ -39,12 +56,11 @@ function Main() {
                 <Column
                   key={column.status}
                   title={column.title}
-                  cards={cardList.filter(
-                    (card) => card.status === column.status,
-                  )}
+                  cards={card.filter((card) => card.status === column.status)}
                 />
               ))}
             </Content>
+            <p>{error}</p>
           </Block>
         </Container>
       </MainEl>

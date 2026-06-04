@@ -13,11 +13,11 @@ import {
 import { useMemo } from 'react';
 import cardList from '../../data';
 
-function Card({ id, title, date, theme, topic }) {
+function Card({ id, title, date, topic }) {
   const themeClassMap = {
-    'At home': '_orange',
-    Work: '_green',
-    School: '_purple',
+    'Web Design': '_orange',
+    Research: '_green',
+    Copywriting: '_purple',
   };
 
   const themeClass = themeClassMap[topic] || '_gray';
@@ -27,7 +27,7 @@ function Card({ id, title, date, theme, topic }) {
       <Cards>
         <Group>
           <Group>
-            <Theme $themeType={topic}>
+            <Theme $themeType={themeClass}>
               <p>{topic}</p>
             </Theme>
           </Group>

@@ -29,19 +29,19 @@ export const Group = styled.div`
 `;
 
 const themeStyles = {
-  'At home': {
+  _orange: {
     bg: '#FFE4C2',
     color: '#FF6D00',
   },
-  Work: {
+  _green: {
     bg: '#B4FDD1',
     color: '#06B16E',
   },
-  School: {
+  _purple: {
     bg: '#E9D4FF',
     color: '#9A48F1',
   },
-  default: {
+  _gray: {
     bg: '#94A6BE',
     color: '#FFFFFF',
   },
