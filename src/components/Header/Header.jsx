@@ -3,9 +3,12 @@ import PopUser from '../PopUser/PopUser';
 import { Block, Btn, Container, HeaderEl, Logo, Nav } from './Header.styled';
 import { Link } from 'react-router-dom';
 import { ROUTER } from '../../router/router';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/contextApi';
 
 function Header({ setIsAuth }) {
   const [open, setOpen] = useState(false);
+  const { user } = useContext(AuthContext);
   return (
     <HeaderEl>
       <Container>
@@ -29,7 +32,7 @@ function Header({ setIsAuth }) {
               className="header__user _hover02"
               onClick={() => setOpen(!open)}
             >
-              Ivan Ivanov
+              {user?.name || 'Пользователь'}
             </a>
             {open && <PopUser />}
           </Nav>

@@ -1,15 +1,18 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Calendar from '../Calendar/Calendar';
 import { ROUTER } from '../../router/router';
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import cardList from '../../data';
+import { AuthContext, TasksContext } from '../../context/contextApi';
 
 function PopBrowse() {
   const { id } = useParams();
-  const CardId = useMemo(
-    () => cardList.find((card) => card.id === id) || {},
-    [id],
-  );
+  const { tasks, deleteTask } = useContext(TasksContext);
+  const { user } = useContext(AuthContext);
+  const task = tasks.find((task) => task._id === id);
+  const navigate = useNavigate();
+
+  const canEdit = task && task.authorId === user.id;
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">
@@ -79,7 +82,10 @@ function PopBrowse() {
                   Редактировать задачу
                 </button>
 
-                <button className="btn-browse__delete _btn-bor _hover03">
+                <button
+                  onClick={() => deleteTask(task._id)}
+                  className="btn-browse__delete _btn-bor _hover03"
+                >
                   Удалить задачу
                 </button>
               </div>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import cardList from '../../data';
 import Column from '../Column/Column';
 import Loader from '../Loader/Loader';
@@ -9,6 +9,7 @@ import PopNewCard from '../PopNewCard/PopNewCard';
 import PopUser from '../PopUser/PopUser';
 import { data, Outlet } from 'react-router-dom';
 import { fetchCard } from '../../services/api';
+import { TasksContext } from '../../context/contextApi';
 
 function Main() {
   const columns = [
@@ -19,29 +20,9 @@ function Main() {
     { title: 'Готово', status: 'Готово' },
   ];
 
-  const [loading, setLoading] = useState(true);
-  const [card, setCard] = useState([]);
-  const [error, setError] = useState('');
+  const { tasks, loading, error } = useContext(TasksContext);
 
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-
-  const getCard = useCallback(async () => {
-    try {
-      setLoading(true);
-      const data = await fetchCard({
-        token: userInfo.token,
-      });
-      if (data) setCard(data);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }, [userInfo.token]);
-
-  useEffect(() => {
-    getCard();
-  }, [getCard]);
 
   return loading ? (
     <Loader />
@@ -56,11 +37,11 @@ function Main() {
                 <Column
                   key={column.status}
                   title={column.title}
-                  cards={card.filter((card) => card.status === column.status)}
+                  cards={tasks.filter((task) => task.status === column.status)}
                 />
               ))}
             </Content>
-            <p>{error}</p>
+            {error && <p>{error}</p>}
           </Block>
         </Container>
       </MainEl>
