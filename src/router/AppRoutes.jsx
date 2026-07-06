@@ -33,7 +33,7 @@ export const AppRoutes = () => {
           element={<SignInPage setIsAuth={setIsAuth} />}
         />
         <Route path={ROUTER.signUp} element={<SignUpPage />} />
-        <Route path={ROUTER.notFound} element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

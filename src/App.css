@@ -245,7 +245,6 @@ body {
 }
 
 .header__pop-user-set {
-  /* display: none; */
   position: absolute;
   top: 61px;
   right: 0;
@@ -452,7 +451,6 @@ body {
 }
 
 .calendar {
-  width: 182px;
   margin-bottom: 20px;
 }
 .calendar__ttl {
@@ -582,6 +580,7 @@ body {
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.4;
+  cursor: pointer;
 }
 .categories__theme p {
   font-size: 14px;
@@ -647,6 +646,8 @@ body {
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
+  outline: none;
+  border: none;
 }
 .pop-browse__wrap {
   display: flex;
@@ -729,13 +730,33 @@ body {
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
+  color: #fff;
 }
 .status__theme p {
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
-  color: white;
 }
+
+._active-status {
+  background: #94a6be;
+  color: #fff;
+  border-color: #94a6be;
+}
+
+._active-status p {
+  color: #fff;
+}
+
+._inactive-status {
+  background: #ffffff;
+  color: #94a6be;
+}
+
+._inactive-status p {
+  color: #94a6be;
+}
+
 
 ._btn-bor {
   border-radius: 4px;

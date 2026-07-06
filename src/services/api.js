@@ -11,7 +11,11 @@ export async function fetchCard({ token }) {
     });
     return data.data.tasks;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(
+      error.response?.data?.error ||
+        error.response?.data?.message ||
+        'Ошибка сервера',
+    );
   }
 }
 
@@ -25,7 +29,11 @@ export async function postCard({ token, card }) {
     });
     return data.data.tasks;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(
+      error.response?.data?.error ||
+        error.response?.data?.message ||
+        'Ошибка сервера',
+    );
   }
 }
 
@@ -38,7 +46,11 @@ export async function getCard({ token, id }) {
     });
     return data.data;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(
+      error.response?.data?.error ||
+        error.response?.data?.message ||
+        'Ошибка сервера',
+    );
   }
 }
 
@@ -52,7 +64,11 @@ export async function editCard({ token, id, card }) {
     });
     return data.data.tasks;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(
+      error.response?.data?.error ||
+        error.response?.data?.message ||
+        'Ошибка сервера',
+    );
   }
 }
 
@@ -65,6 +81,10 @@ export async function deleteCard({ token, id }) {
     });
     return data.data.tasks;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(
+      error.response?.data?.error ||
+        error.response?.data?.message ||
+        'Ошибка сервера',
+    );
   }
 }

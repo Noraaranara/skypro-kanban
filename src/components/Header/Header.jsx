@@ -1,39 +1,50 @@
 import { useState } from 'react';
 import PopUser from '../PopUser/PopUser';
-import { Block, Btn, Container, HeaderEl, Logo, Nav } from './Header.styled';
+import {
+  Block,
+  Btn,
+  Container,
+  HeaderEl,
+  Logo,
+  Nav,
+  SUser,
+} from './Header.styled';
 import { Link } from 'react-router-dom';
 import { ROUTER } from '../../router/router';
 import { useContext } from 'react';
-import { AuthContext } from '../../context/contextApi';
+import { AuthContext, ThemeContext } from '../../context/contextApi';
 
 function Header({ setIsAuth }) {
   const [open, setOpen] = useState(false);
   const { user } = useContext(AuthContext);
+  const { theme } = useContext(ThemeContext);
   return (
-    <HeaderEl>
+    <HeaderEl style={{ background: theme === 'light' ? '#f0f0f0' : '#222' }}>
       <Container>
         <Block>
           <Logo>
             <a href="" target="_self">
-              <img src="images/logo.png" alt="logo" />
-            </a>
-          </Logo>
-          <Logo $dark>
-            <a href="" target="_self">
-              <img src="images/logo_dark.png" alt="logo" />
+              {theme === 'light' ? (
+                <img src="images/logo.png" alt="logo" />
+              ) : (
+                <img src="images/logo_dark.png" alt="logo" />
+              )}
             </a>
           </Logo>
           <Nav>
             <Btn id="btnMainNew">
               <Link to={ROUTER.newCard}>Создать новую задачу</Link>
             </Btn>
-            <a
-              href="#"
-              className="header__user _hover02"
+            <SUser
+              style={{
+                color: theme === 'light' ? '#565eef' : '#fff',
+                borderLeftColor: theme === 'light' ? '#565eef' : '#fff',
+                borderBottomColor: theme === 'light' ? '#565eef' : '#fff',
+              }}
               onClick={() => setOpen(!open)}
             >
               {user?.name || 'Пользователь'}
-            </a>
+            </SUser>
             {open && <PopUser />}
           </Nav>
         </Block>

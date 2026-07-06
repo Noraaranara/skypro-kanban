@@ -1,55 +1,91 @@
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Calendar from '../Calendar/Calendar';
 import { ROUTER } from '../../router/router';
-import { TasksContext } from '../../context/contextApi';
+import { TasksContext, ThemeContext } from '../../context/contextApi';
 import { useContext, useState } from 'react';
 import { postCard } from '../../services/api';
+import {
+  SBlock,
+  SBtn,
+  SCategories,
+  SClose,
+  SContainer,
+  SContent,
+  SCParag,
+  SCThemes,
+  SFArea,
+  SFBlock,
+  SFInput,
+  SForm,
+  SFSub,
+  SNewCard,
+  STitle,
+  SWrap,
+} from './PopNewCard.styled';
 
 function PopNewCard() {
   const { tasks, addTask } = useContext(TasksContext);
+  const { theme } = useContext(ThemeContext);
   const [taskName, setTaskName] = useState('');
+  const [taskDescription, setTaskDescription] = useState('');
+  const [topic, setTopic] = useState('Web Design');
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   const onInputChange = (e) => {
     setTaskName(e.target.value);
   };
 
   const onAddTask = async () => {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    await postCard({ token: userInfo.token, card: { title: taskName } });
-    setTaskName('');
-  };
+    if (!taskName.trim() || !taskDescription.trim()) {
+      setError('Заполните все поля');
+      return;
+    }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (taskName.trim()) {
-      addTask(taskName);
-      setTaskName('');
+    try {
+      await addTask({
+        title: taskName.trim(),
+        description: taskDescription.trim(),
+        topic: topic,
+        status: 'Без статуса',
+      });
       navigate(ROUTER.main);
+    } catch (error) {
+      setError(error.message);
     }
   };
+
   return (
-    <div className="pop-new-card" id="popNewCard">
-      <div className="pop-new-card__container">
-        <div className="pop-new-card__block">
-          <div className="pop-new-card__content">
-            <h3 className="pop-new-card__ttl">Создание задачи</h3>
-            <Link to={ROUTER.main} className="pop-new-card__close">
-              &#10006;
-            </Link>
-            <div className="pop-new-card__wrap">
-              <form
-                className="pop-new-card__form form-new"
-                id="formNewCard"
-                action="#"
-                onSubmit={handleSubmit}
-              >
-                <div className="form-new__block">
-                  <label htmlFor="formTitle" className="subttl">
+    <SNewCard id="popNewCard">
+      <SContainer>
+        <SBlock
+          style={{
+            background: theme === 'light' ? '#ffffff' : '#20202C',
+            border:
+              theme === 'light' ? '0.7px solid #d4dbe5' : '0.7px solid #4E5566',
+          }}
+        >
+          <SContent>
+            <STitle
+              style={{
+                color: theme === 'light' ? '#000' : '#fff',
+              }}
+            >
+              Создание задачи
+            </STitle>
+            <SClose to={ROUTER.main}>&#10006;</SClose>
+            <SWrap>
+              <SForm id="formNewCard" action="#">
+                <SFBlock>
+                  <SFSub
+                    htmlFor="formTitle"
+                    style={{
+                      color: theme === 'light' ? '#000' : '#fff',
+                    }}
+                  >
                     Название задачи
-                  </label>
-                  <input
-                    className="form-new__input"
+                  </SFSub>
+                  <SFInput
                     value={taskName}
                     onChange={onInputChange}
                     type="text"
@@ -58,47 +94,74 @@ function PopNewCard() {
                     placeholder="Введите название задачи..."
                     autoFocus
                   />
-                </div>
-                <div className="form-new__block">
-                  <label htmlFor="textArea" className="subttl">
+                </SFBlock>
+                <SFBlock>
+                  <SFSub
+                    style={{
+                      color: theme === 'light' ? '#000' : '#fff',
+                    }}
+                    htmlFor="textArea"
+                  >
                     Описание задачи
-                  </label>
-                  <textarea
-                    className="form-new__area"
+                  </SFSub>
+                  <SFArea
                     name="text"
                     id="textArea"
                     placeholder="Введите описание задачи..."
-                  ></textarea>
-                </div>
-              </form>
+                    value={taskDescription}
+                    onChange={(e) => setTaskDescription(e.target.value)}
+                  ></SFArea>
+                </SFBlock>
+              </SForm>
               <Calendar />
-            </div>
-            <div className="pop-new-card__categories categories">
-              <p className="categories__p subttl">Категория</p>
-              <div className="categories__themes">
-                <div className="categories__theme _orange _active-category">
+            </SWrap>
+            <SCategories>
+              <SCParag
+                style={{
+                  color: theme === 'light' ? '#000' : '#fff',
+                }}
+              >
+                Категория
+              </SCParag>
+              <SCThemes>
+                <div
+                  className={`categories__theme _orange ${
+                    topic === 'Web Design' ? '_active-category' : ''
+                  }`}
+                  onClick={() => setTopic('Web Design')}
+                >
                   <p className="_orange">Web Design</p>
                 </div>
-                <div className="categories__theme _green">
+                <div
+                  className={`categories__theme _green ${
+                    topic === 'Research' ? '_active-category' : ''
+                  }`}
+                  onClick={() => setTopic('Research')}
+                >
                   <p className="_green">Research</p>
                 </div>
-                <div className="categories__theme _purple">
+                <div
+                  className={`categories__theme _purple ${
+                    topic === 'Copywriting' ? '_active-category' : ''
+                  }`}
+                  onClick={() => setTopic('Copywriting')}
+                >
                   <p className="_purple">Copywriting</p>
                 </div>
-              </div>
-            </div>
-            <button
+              </SCThemes>
+            </SCategories>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <SBtn
               disabled={!taskName.trim()}
               onClick={onAddTask}
-              className="form-new__create _hover01"
               id="btnCreate"
             >
               Создать задачу
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            </SBtn>
+          </SContent>
+        </SBlock>
+      </SContainer>
+    </SNewCard>
   );
 }
 

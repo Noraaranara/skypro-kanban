@@ -8,10 +8,12 @@ import {
   Btn,
   Content,
   Title,
-  Date,
+  DateText,
 } from './Card.styled';
 import { useMemo } from 'react';
 import cardList from '../../data';
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/contextApi';
 
 function Card({ id, title, date, topic }) {
   const themeClassMap = {
@@ -20,11 +22,15 @@ function Card({ id, title, date, topic }) {
     Copywriting: '_purple',
   };
 
+  const formattedDate = new Date(date).toLocaleDateString('ru-RU');
+
   const themeClass = themeClassMap[topic] || '_gray';
+
+  const { theme } = useContext(ThemeContext);
 
   return (
     <Item>
-      <Cards>
+      <Cards style={{ background: theme === 'light' ? '#fff' : '#20202C' }}>
         <Group>
           <Group>
             <Theme $themeType={themeClass}>
@@ -41,10 +47,12 @@ function Card({ id, title, date, topic }) {
         </Group>
 
         <Content>
-          <Title>{title}</Title>
-          <Date>
-            <p>{date}</p>
-          </Date>
+          <Title style={{ color: theme === 'light' ? '#000000' : '#fff' }}>
+            {title}
+          </Title>
+          <DateText>
+            <p>{formattedDate}</p>
+          </DateText>
         </Content>
       </Cards>
     </Item>

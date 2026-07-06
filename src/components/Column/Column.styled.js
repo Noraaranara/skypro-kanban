@@ -35,3 +35,8 @@ export const Cards = styled.div`
     overflow-y: auto;
   }
 `;
+
+export const SEmpty = styled.h2`
+  font-size: 20px;
+  color: #94a6be;
+`;

@@ -40,19 +40,25 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
 
     if (isSignUp && !formData.name.trim()) {
       newErrors.name = true;
-      setError('Заполните все поля');
+      setError(
+        'Введенные вами данные не корректны.\nЧтобы завершить регистрацию, заполните все поля в форме.',
+      );
       isValid = false;
     }
 
     if (!formData.login.trim()) {
       newErrors.login = true;
-      setError('Заполните все поля');
+      setError(
+        'Введенные вами данные не корректны.\nЧтобы завершить регистрацию, заполните все поля в форме.',
+      );
       isValid = false;
     }
 
     if (!formData.password.trim()) {
       newErrors.password = true;
-      setError('Заполните все поля');
+      setError(
+        'Введенные вами данные не корректны.\nЧтобы завершить регистрацию, заполните все поля в форме.',
+      );
       isValid = false;
     }
 
@@ -107,6 +113,7 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
                   placeholder="Имя"
                   value={formData.name}
                   onChange={handleChange}
+                  $error={errors.name}
                 />
               )}
               <ModalInput
@@ -116,6 +123,7 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
                 placeholder="Эл. почта"
                 value={formData.login}
                 onChange={handleChange}
+                $error={errors.login}
               />
               <ModalInput
                 type="password"
@@ -124,6 +132,7 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
                 placeholder="Пароль"
                 value={formData.password}
                 onChange={handleChange}
+                $error={errors.password}
               />
               <p style={{ color: 'red' }}>{error}</p>
               <ModalBtnEnter>

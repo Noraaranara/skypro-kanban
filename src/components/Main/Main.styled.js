@@ -3,7 +3,6 @@ import { breakpoints } from '../../components/Header/Header.styled';
 
 export const MainEl = styled.main`
   width: 100%;
-  background-color: #eaeef6;
 `;
 
 export const Container = styled.div`
