@@ -3,10 +3,17 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
 import { AppRoutes } from './router/AppRoutes.jsx';
+import {
+  AuthContextProvider,
+  TasksContextProvider,
+} from './context/ContextProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <App /> */}
-    <AppRoutes />
+    <AuthContextProvider>
+      <TasksContextProvider>
+        <AppRoutes />
+      </TasksContextProvider>
+    </AuthContextProvider>
   </StrictMode>,
 );

@@ -1,11 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { ROUTER } from '../../router/router';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/contextApi';
 
 function PopExit({ setIsAuth }) {
   const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
   function handleLogout(e) {
     e.preventDefault();
-    localStorage.removeItem('userInfo');
+    logout();
     setIsAuth(false);
     navigate(ROUTER.signIn);
   }

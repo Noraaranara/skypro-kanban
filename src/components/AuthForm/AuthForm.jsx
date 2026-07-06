@@ -13,9 +13,12 @@ import {
 import { ROUTER } from '../../router/router';
 import { useState } from 'react';
 import { signIn, signUp } from '../../services/auth';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/contextApi';
 
 const AuthForm = ({ isSignUp, setIsAuth }) => {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -78,9 +81,9 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
         : await signUp(formData);
 
       if (data) {
-        setIsAuth(true);
         const { password, ...safeUserData } = data;
-        localStorage.setItem('userInfo', JSON.stringify(safeUserData));
+        login(safeUserData);
+        setIsAuth(true);
         navigate(ROUTER.main);
       }
     } catch (err) {
