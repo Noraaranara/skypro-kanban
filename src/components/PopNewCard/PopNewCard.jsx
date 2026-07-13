@@ -29,6 +29,7 @@ function PopNewCard() {
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
   const [topic, setTopic] = useState('Web Design');
+  const [date, setDate] = useState(null);
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
@@ -48,6 +49,7 @@ function PopNewCard() {
         description: taskDescription.trim(),
         topic: topic,
         status: 'Без статуса',
+        date,
       });
       navigate(ROUTER.main);
     } catch (error) {
@@ -113,7 +115,7 @@ function PopNewCard() {
                   ></SFArea>
                 </SFBlock>
               </SForm>
-              <Calendar />
+              <Calendar date={date} setDate={setDate} isEditing={true} />
             </SWrap>
             <SCategories>
               <SCParag

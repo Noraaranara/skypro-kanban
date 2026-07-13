@@ -40,7 +40,7 @@ function Calendar({ date, setDate, isEditing }) {
         <DatePicker
           inline
           locale="ru"
-          selected={date}
+          selected={date ?? null}
           onChange={isEditing ? setDate : undefined}
           disabled={!isEditing}
           renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
@@ -57,13 +57,13 @@ function Calendar({ date, setDate, isEditing }) {
         />
 
         <Deadline>
-          Срок исполнения:{' '}
+          {date ? 'срок исполнения: ' : 'Выберите срок исполнения'}
           <span
             style={{
               color: theme === 'light' ? '#000' : '#fff',
             }}
           >
-            {format(date, 'dd.MM.yy')}
+            {date ? format(date, 'dd.MM.yy') : ''}
           </span>
         </Deadline>
       </CalendarWrapper>

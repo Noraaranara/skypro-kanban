@@ -13,7 +13,7 @@ import {
   SYes,
 } from './PopExit.styled';
 
-function PopExit({ setIsAuth }) {
+function PopExit() {
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
   function handleLogout(e) {
