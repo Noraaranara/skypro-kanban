@@ -25,18 +25,12 @@ export const Title = styled.div`
   }
 `;
 export const Cards = styled.div`
-  width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 10px 20px;
   position: relative;
 
   @media screen and (max-width: ${breakpoints.desktop}) {
-    width: 100%;
-    display: flex;
-    overflow-y: auto;
+    overflow-x: auto;
   }
-`;
-
-export const SEmpty = styled.h2`
-  font-size: 20px;
-  color: #94a6be;
 `;

@@ -93,16 +93,11 @@ export const SUser = styled.a`
     color: #33399b;
   }
 
-  &::after {
-    content: '';
+  svg {
     display: block;
-    width: 6px;
-    height: 6px;
-    border-radius: 1px;
-    border-left: 1.9px solid #565eef;
-    border-bottom: 1.9px solid #565eef;
-    transform: rotate(-45deg);
-    margin: -6px 0 0 5px;
+    width: 7px;
+    height: 4px;
+    margin: 3px 0 0 5px;
     padding: 0;
   }
 

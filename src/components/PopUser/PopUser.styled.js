@@ -4,7 +4,7 @@ export const SPopUser = styled.div`
   position: absolute;
   top: 61px;
   right: 0;
-  width: 213px;
+  min-width: 213px;
   height: 205px;
   border-radius: 10px;
   padding: 34px;

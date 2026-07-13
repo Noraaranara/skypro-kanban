@@ -22,6 +22,7 @@ import {
   STitle,
   SWrap,
 } from './PopNewCard.styled';
+import { toast } from 'react-toastify';
 
 function PopNewCard() {
   const { tasks, addTask } = useContext(TasksContext);
@@ -39,7 +40,7 @@ function PopNewCard() {
 
   const onAddTask = async () => {
     if (!taskName.trim() || !taskDescription.trim()) {
-      setError('Заполните все поля');
+      toast.warning('Заполните все поля');
       return;
     }
 
@@ -51,9 +52,10 @@ function PopNewCard() {
         status: 'Без статуса',
         date,
       });
+      toast.success('Задача успешно создана');
       navigate(ROUTER.main);
     } catch (error) {
-      setError(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -95,6 +97,9 @@ function PopNewCard() {
                     id="formTitle"
                     placeholder="Введите название задачи..."
                     autoFocus
+                    style={{
+                      color: theme === 'light' ? '#000' : '#fff',
+                    }}
                   />
                 </SFBlock>
                 <SFBlock>
@@ -112,6 +117,9 @@ function PopNewCard() {
                     placeholder="Введите описание задачи..."
                     value={taskDescription}
                     onChange={(e) => setTaskDescription(e.target.value)}
+                    style={{
+                      color: theme === 'light' ? '#000' : '#fff',
+                    }}
                   ></SFArea>
                 </SFBlock>
               </SForm>
@@ -152,7 +160,6 @@ function PopNewCard() {
                 </div>
               </SCThemes>
             </SCategories>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
             <SBtn
               disabled={!taskName.trim()}
               onClick={onAddTask}

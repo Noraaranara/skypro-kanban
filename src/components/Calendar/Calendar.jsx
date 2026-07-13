@@ -35,7 +35,7 @@ function Calendar({ date, setDate, isEditing }) {
           backgroundColor: theme === 'light' ? '#fff' : '#20202C',
         }}
       >
-        <CalendarGlobalStyle />
+        <CalendarGlobalStyle $theme={theme} />
 
         <DatePicker
           inline

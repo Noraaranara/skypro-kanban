@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Calendar from '../Calendar/Calendar';
 import { ROUTER } from '../../router/router';
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useState } from 'react';
 import cardList from '../../data';
 import {
   AuthContext,
@@ -21,6 +21,7 @@ import {
   SForm,
   SInput,
   SPopBrowse,
+  SSBtn,
   SSParag,
   SStatus,
   SSTheme,
@@ -29,6 +30,7 @@ import {
   STop,
   SWrap,
 } from './PopBrowse.styled';
+import { toast } from 'react-toastify';
 
 function PopBrowse() {
   const { id } = useParams();
@@ -44,9 +46,10 @@ function PopBrowse() {
   const handleDelete = async () => {
     try {
       await deleteTask(task._id);
+      toast.success('Задача удалена');
       navigate(ROUTER.main);
     } catch (error) {
-      setError(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -73,7 +76,7 @@ function PopBrowse() {
 
   const handleSave = async () => {
     if (!title.trim() || !description.trim()) {
-      setError('Заполните все поля');
+      toast.warning('Заполните все поля');
       return;
     }
     try {
@@ -85,9 +88,10 @@ function PopBrowse() {
         date,
       });
 
+      toast.success('Изменения сохранены');
       navigate(ROUTER.main);
     } catch (error) {
-      setError(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -159,16 +163,15 @@ function PopBrowse() {
                   </SSTheme>
                 ) : (
                   statuses.map((item) => (
-                    <button
+                    <SSBtn
                       key={item}
                       type="button"
                       onClick={() => setStatus(item)}
-                      className={`status__theme ${
-                        item === status ? '_active-status' : '_inactive-status'
-                      }`}
+                      $active={status === item}
+                      $theme={theme}
                     >
                       <p>{item}</p>
-                    </button>
+                    </SSBtn>
                   ))
                 )}
               </SSThemes>
@@ -189,8 +192,10 @@ function PopBrowse() {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     readOnly={!isEditing}
+                    $theme={theme}
                     style={{
                       background: theme === 'light' ? '#eaeef6' : '#151419',
+                      color: theme === 'light' ? '#000' : '#fff',
                       border:
                         theme === 'light'
                           ? '0.7px solid rgba(148, 166, 190, 0.4)'
@@ -229,7 +234,6 @@ function PopBrowse() {
 
               <SClose to={ROUTER.main}>Закрыть</SClose>
             </SBtn>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
           </SContent>
         </SBlock>
       </SContainer>

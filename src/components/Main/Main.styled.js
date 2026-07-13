@@ -3,6 +3,7 @@ import { breakpoints } from '../../components/Header/Header.styled';
 
 export const MainEl = styled.main`
   width: 100%;
+  flex: 1;
 `;
 
 export const Container = styled.div`
@@ -35,4 +36,12 @@ export const Content = styled.div`
   @media screen and (max-width: ${breakpoints.desktop}) {
     display: block;
   }
+`;
+
+export const SEmpty = styled.h2`
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+  color: #94a6be;
+  font-size: 24px;
 `;

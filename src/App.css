@@ -36,7 +36,8 @@ ul li {
   }
 }
 html,
-body {
+body,
+#root {
   width: 100%;
   height: 100%;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
@@ -46,9 +47,11 @@ body {
 .wrapper {
   max-width: 100%;
   width: 100vw;
-  min-height: 100vh;
+  min-height: 100%;
   overflow: hidden;
   background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -458,7 +461,7 @@ body {
   padding: 0 7px;
 }
 .calendar__p {
-  color: #94A6BE;
+  color: #94a6be;
   font-size: 10px;
   line-height: 1;
 }
@@ -469,7 +472,7 @@ body {
   display: block;
 }
 .calendar__month {
-  color: #94A6BE;
+  color: #94a6be;
   font-size: 14px;
   line-height: 25px;
   font-weight: 600;
@@ -486,7 +489,7 @@ body {
   padding: 0 7px;
 }
 .calendar__day-name {
-  color: #94A6BE;
+  color: #94a6be;
   font-size: 10px;
   font-weight: 500;
   line-height: normal;
@@ -507,7 +510,7 @@ body {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  color: #94A6BE;
+  color: #94a6be;
   font-size: 10px;
   line-height: 1;
   letter-spacing: -0.2px;
@@ -539,7 +542,7 @@ body {
   justify-content: center;
 }
 .nav__action svg {
-  fill: #94A6BE;
+  fill: #94a6be;
 }
 
 ._other-month {
@@ -547,13 +550,13 @@ body {
 }
 
 ._cell-day:hover {
-  color: #94A6BE;
-  background-color: #EAEEF6;
+  color: #94a6be;
+  background-color: #eaeef6;
 }
 
 ._active-day {
-  background-color: #94A6BE;
-  color: #FFFFFF;
+  background-color: #94a6be;
+  color: #ffffff;
 }
 
 ._current {
@@ -756,7 +759,6 @@ body {
 ._inactive-status p {
   color: #94a6be;
 }
-
 
 ._btn-bor {
   border-radius: 4px;

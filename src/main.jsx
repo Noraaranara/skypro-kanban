@@ -14,7 +14,7 @@ createRoot(document.getElementById('root')).render(
     <AuthContextProvider>
       <TasksContextProvider>
         <ThemeContextProvider>
-          <AppRoutes />
+          <App />
         </ThemeContextProvider>
       </TasksContextProvider>
     </AuthContextProvider>

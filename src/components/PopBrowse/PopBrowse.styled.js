@@ -88,26 +88,48 @@ export const SSThemes = styled.div`
   justify-content: flex-start;
 `;
 
-export const SSTheme = styled.div`
+export const SSTheme = styled.button`
   border-radius: 24px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
-  background-color: rgba(148, 166, 190, 1);
-  padding: 11px 14px 10px;
+  background-color: #94a6be;
+  padding: 10px 17px;
   margin-right: 7px;
   margin-bottom: 7px;
   display: inline-block;
   width: auto;
   height: 30px;
-  padding: 8px 20px;
   border-radius: 24px;
   margin-right: 7px;
   opacity: 1;
-  cursor: pointer;
+  cursor: not-allowed;
 
   p {
     font-size: 14px;
-    line-height: 1;
-    letter-spacing: -0.14px;
+    line-height: 10px;
+    text-align: center;
+  }
+`;
+
+export const SSBtn = styled.button`
+  border-radius: 24px;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  color: #94a6be;
+  padding: 10px 16px;
+  margin-right: 7px;
+  margin-bottom: 7px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 10px;
+
+  background: ${({ $active, $theme }) =>
+    $active ? '#94A6BE' : $theme === 'light' ? '#FFFFFF' : '#20202C'};
+  color: ${({ $active, $theme }) =>
+    $active ? '#FFFFFF' : $theme === 'light' ? '#94A6BE' : '#94A6BE'};
+  border-color: ${({ $active }) =>
+    $active ? '#94A6BE' : 'rgba(148, 166, 190, 0.4)'};
+
+  &:last-child {
+    margin-right: 0;
   }
 `;
 
@@ -150,7 +172,7 @@ export const SFArea = styled.textarea`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94a6be;
+    color: ${({ $theme }) => ($theme === 'light' ? '#000' : '#fff')};
     letter-spacing: -0.14px;
   }
 
@@ -158,7 +180,7 @@ export const SFArea = styled.textarea`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94a6be;
+    color: ${({ $theme }) => ($theme === 'light' ? '#000' : '#fff')};
     letter-spacing: -0.14px;
   }
 

@@ -76,14 +76,13 @@ export const CalendarGlobalStyle = createGlobalStyle`
 
 .react-datepicker{
     border:none;
-    background:#fff;
     font-family: inherit;
     width: 100%;
+    background: ${({ $theme }) => ($theme === 'light' ? '#fff' : '#20202C')};
 }
 
-
 .react-datepicker__header{
-    background:#fff;
+    background: ${({ $theme }) => ($theme === 'light' ? '#fff' : '#20202C')};
     border:none;
     padding: 0;
 }
