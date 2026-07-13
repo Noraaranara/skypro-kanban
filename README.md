@@ -1,16 +1,108 @@
-# React + Vite
+# Skypro-kanban
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+_Учебный проект по frontend-разработке_
 
-Currently, two official plugins are available:
+Skypro-kanban - доска для управления задачами. Приложение позволяет создавать, редактировать, удалять и просматривать задачи, распределяя их по статусам.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Цель проекта** - создать удобный и функциональный инструмент для управления задачами
 
-## React Compiler
+## Функциональность
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Авторизация
 
-## Expanding the ESLint configuration
+- Вход в приложение
+- Регистрация нового пользователя
+- Выход из системы
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Список задачи
+
+- Просмотр задач по статусам
+- Добавление новых задач
+- Редактирование существующих задач
+- Удаление задач
+
+### Календарь
+
+- Отображение сегодняшней даты
+- Выбор даты исполнения
+
+### Уведомления
+
+- актуальные всплывающие уведомления при ошибках, авторизации, добавлении и удалении задач
+
+### Тема
+
+- Переключение светлой и тёмной темы
+- Сохранение выбранной темы при перезагрузке
+
+### Лоудер
+
+- Скелет во время загрузки данных
+
+## Дизайн
+
+Интерфейс реализуется на основе предоставленного [макета в Figma](https://www.figma.com/design/E7Cy6rpz0dYtZB5ygErVVX/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D0%BC%D0%B0%D0%BA%D0%B5%D1%82%D0%B0-%D1%81%D0%B0%D0%B9%D1%82%D0%B0.-React.-%D0%92%D0%B5%D0%B1-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA?node-id=1-538&m=draw) с максимальным соблюдением визуального оформления и пользовательских сценариев.
+
+## Технологии
+
+### Основной стек
+
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- React
+- Vite
+
+### Библиотеки
+
+- React Router DOM — маршрутизация приложения
+- Axios — работа с API
+- Styled Components — стилизация компонентов
+- date-fns, react-datepicker — визуализация календаря
+- React-toastify - создание уведомлений
+
+
+## Инструменты разработки
+
+- ESLint
+- Prettier
+- Git
+- GitHub
+
+## Установка проекта
+
+Клонируйте репозиторий:
+
+```bash
+git clone https://github.com/kors-ak/skypro-wallet.git
+```
+
+Перейдите в папку проекта:
+
+```bash
+cd skypro-wallet
+```
+
+Установите зависимости:
+
+```bash
+npm install
+```
+
+Запустите проект:
+
+```bash
+npm run dev
+```
+
+## Организация работы
+
+- Основная ветка разработки — `dev`.
+- Перед созданием новой рабочей ветки необходимо синхронизироваться с актуальной версией ветки `dev` (`git pull origin dev`).
+- Все изменения отправляются через Pull Request в ветку `dev`.
+- По завершении спринта создается Pull Request из ветки `dev` в ветку `main`.
+- После проверки наставником ветка `dev` объединяется с веткой `main`.
+
+## Автор
+
+Проект выполнен в рамках обучения по курсу **SkyPro** Солнцевой Энорией.

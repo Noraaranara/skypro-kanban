@@ -26,7 +26,7 @@ function PopUser() {
         {user?.name || 'Пользователь'}
       </SName>
       <SMail>{user?.login || 'email@example.com'}</SMail>
-      <STheme>
+      <STheme $theme={theme}>
         <p style={{ color: theme === 'light' ? '#000' : '#fff' }}>
           Темная тема
         </p>

@@ -47,7 +47,7 @@ export const STheme = styled.div`
     width: 24px;
     height: 13px;
     border-radius: 100px;
-    background: #eaeef6;
+    background: ${({ $theme }) => ($theme === 'light' ? '#EAEEF6' : '#fff')};
     outline: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -62,7 +62,7 @@ export const STheme = styled.div`
     width: 11px;
     height: 11px;
     border-radius: 50%;
-    background-color: #94a6be;
+    background: ${({ $theme }) => ($theme === 'light' ? '#94A6BE' : '#565EEF')};
     transition: 0.5s;
   }
 
