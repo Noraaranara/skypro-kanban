@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale';
 import { format } from 'date-fns';
@@ -16,13 +16,25 @@ import {
   SCalendar,
   STitle,
 } from './Calendar.styled';
+import { ThemeContext } from '../../context/contextApi';
 registerLocale('ru', ru);
 
 function Calendar({ date, setDate, isEditing }) {
+  const { theme } = useContext(ThemeContext);
   return (
     <SCalendar>
-      <STitle>Даты</STitle>
-      <CalendarWrapper>
+      <STitle
+        style={{
+          color: theme === 'light' ? '#000' : '#fff',
+        }}
+      >
+        Даты
+      </STitle>
+      <CalendarWrapper
+        style={{
+          backgroundColor: theme === 'light' ? '#fff' : '#20202C',
+        }}
+      >
         <CalendarGlobalStyle />
 
         <DatePicker
@@ -45,7 +57,14 @@ function Calendar({ date, setDate, isEditing }) {
         />
 
         <Deadline>
-          Срок исполнения: <span>{format(date, 'dd.MM.yy')}</span>
+          Срок исполнения:{' '}
+          <span
+            style={{
+              color: theme === 'light' ? '#000' : '#fff',
+            }}
+          >
+            {format(date, 'dd.MM.yy')}
+          </span>
         </Deadline>
       </CalendarWrapper>
     </SCalendar>

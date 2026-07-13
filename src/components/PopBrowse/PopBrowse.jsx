@@ -190,7 +190,7 @@ function PopBrowse() {
                     onChange={(e) => setDescription(e.target.value)}
                     readOnly={!isEditing}
                     style={{
-                      backGround: theme === 'light' ? '#eaeef6' : '#151419',
+                      background: theme === 'light' ? '#eaeef6' : '#151419',
                       border:
                         theme === 'light'
                           ? '0.7px solid rgba(148, 166, 190, 0.4)'

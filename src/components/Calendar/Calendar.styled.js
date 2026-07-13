@@ -7,14 +7,12 @@ export const SCalendar = styled.div`
 export const STitle = styled.p`
   margin-bottom: 14px;
   padding-left: 20px;
-  color: #000;
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
 `;
 
 export const CalendarWrapper = styled.div`
-  background: #ffffff;
   border-radius: 10px;
   padding-left: 20px;
 `;
@@ -24,10 +22,6 @@ export const Deadline = styled.p`
 
   font-size: 10px;
   color: #94a6be;
-
-  span {
-    color: #000;
-  }
 `;
 
 export const Header = styled.div`
