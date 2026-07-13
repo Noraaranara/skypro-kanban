@@ -19,7 +19,6 @@ function PopExit({ setIsAuth }) {
   function handleLogout(e) {
     e.preventDefault();
     logout();
-    setIsAuth(false);
     navigate(ROUTER.signIn);
   }
   return (

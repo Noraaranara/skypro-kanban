@@ -89,7 +89,6 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
       if (data) {
         const { password, ...safeUserData } = data;
         login(safeUserData);
-        setIsAuth(true);
         navigate(ROUTER.main);
       }
     } catch (err) {
