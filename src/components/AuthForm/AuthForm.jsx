@@ -142,6 +142,9 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
                 value={formData.login}
                 onChange={handleChange}
                 $error={errors.login}
+                style={{
+                  color: theme === 'light' ? '#000' : '#fff',
+                }}
               />
               <ModalInput
                 type="password"

@@ -41,20 +41,20 @@ export const STheme = styled.div`
     line-height: 21px;
     letter-spacing: -0.14px;
   }
+`;
 
-  input[type='checkbox'] {
-    position: relative;
-    width: 24px;
-    height: 13px;
-    border-radius: 100px;
-    background: ${({ $theme }) => ($theme === 'light' ? '#EAEEF6' : '#fff')};
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-  }
+export const SCheckbox = styled.input`
+  position: relative;
+  width: 24px;
+  height: 13px;
+  border-radius: 100px;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
 
-  input[type='checkbox']::before {
+  background: ${({ $theme }) => ($theme === 'light' ? '#EAEEF6' : '#fff')};
+
+  &::before {
     content: '';
     position: absolute;
     top: 1px;
@@ -62,11 +62,11 @@ export const STheme = styled.div`
     width: 11px;
     height: 11px;
     border-radius: 50%;
+    transition: 0.3s;
     background: ${({ $theme }) => ($theme === 'light' ? '#94A6BE' : '#565EEF')};
-    transition: 0.5s;
   }
 
-  input:checked[type='checkbox']::before {
+  &:checked::before {
     left: 12px;
   }
 `;

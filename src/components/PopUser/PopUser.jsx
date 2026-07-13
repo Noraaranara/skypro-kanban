@@ -2,7 +2,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ROUTER } from '../../router/router';
 import { useContext } from 'react';
 import { AuthContext, ThemeContext } from '../../context/contextApi';
-import { SButton, SMail, SName, SPopUser, STheme } from './PopUser.styled';
+import {
+  SButton,
+  SCheckbox,
+  SMail,
+  SName,
+  SPopUser,
+  STheme,
+} from './PopUser.styled';
 
 function PopUser() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -26,11 +33,17 @@ function PopUser() {
         {user?.name || 'Пользователь'}
       </SName>
       <SMail>{user?.login || 'email@example.com'}</SMail>
-      <STheme $theme={theme}>
+      <STheme>
         <p style={{ color: theme === 'light' ? '#000' : '#fff' }}>
           Темная тема
         </p>
-        <input type="checkbox" name="checkbox" onClick={toggleTheme} />
+        <SCheckbox
+          type="checkbox"
+          name="checkbox"
+          checked={theme === 'dark'}
+          onChange={toggleTheme}
+          $theme={theme}
+        />
       </STheme>
       <SButton
         style={{
