@@ -6,13 +6,16 @@ import { AppRoutes } from './router/AppRoutes.jsx';
 import {
   AuthContextProvider,
   TasksContextProvider,
+  ThemeContextProvider,
 } from './context/ContextProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthContextProvider>
       <TasksContextProvider>
-        <AppRoutes />
+        <ThemeContextProvider>
+          <App />
+        </ThemeContextProvider>
       </TasksContextProvider>
     </AuthContextProvider>
   </StrictMode>,

@@ -14,11 +14,13 @@ import { ROUTER } from '../../router/router';
 import { useState } from 'react';
 import { signIn, signUp } from '../../services/auth';
 import { useContext } from 'react';
-import { AuthContext } from '../../context/contextApi';
+import { AuthContext, ThemeContext } from '../../context/contextApi';
+import { toast } from 'react-toastify';
 
 const AuthForm = ({ isSignUp, setIsAuth }) => {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const { theme } = useContext(ThemeContext);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -40,19 +42,25 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
 
     if (isSignUp && !formData.name.trim()) {
       newErrors.name = true;
-      setError('Заполните все поля');
+      toast.warning(
+        'Введенные вами данные не корректны.\nЧтобы завершить регистрацию, заполните все поля в форме.',
+      );
       isValid = false;
     }
 
     if (!formData.login.trim()) {
       newErrors.login = true;
-      setError('Заполните все поля');
+      toast.warning(
+        'Введенные вами данные не корректны.\nЧтобы завершить регистрацию, заполните все поля в форме.',
+      );
       isValid = false;
     }
 
     if (!formData.password.trim()) {
       newErrors.password = true;
-      setError('Заполните все поля');
+      toast.warning(
+        'Введенные вами данные не корректны.\nЧтобы завершить регистрацию, заполните все поля в форме.',
+      );
       isValid = false;
     }
 
@@ -83,19 +91,35 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
       if (data) {
         const { password, ...safeUserData } = data;
         login(safeUserData);
-        setIsAuth(true);
+        toast.success('Вы успешно вошли');
         navigate(ROUTER.main);
       }
     } catch (err) {
-      setError(err.message);
+      toast.error(err.message);
     }
   };
   return (
-    <Wrapper>
+    <Wrapper
+      style={{
+        backgroundColor: theme === 'light' ? '#eaeef6' : '#151419',
+      }}
+    >
       <Container>
         <Modal>
-          <ModalBlock>
-            <ModalTtl>
+          <ModalBlock
+            style={{
+              backgroundColor: theme === 'light' ? '#ffffff' : '#20202C',
+              border:
+                theme === 'light'
+                  ? '0.7px solid #d4dbe5'
+                  : '0.7px solid #4E5566',
+            }}
+          >
+            <ModalTtl
+              style={{
+                color: theme === 'light' ? '#000' : '#fff',
+              }}
+            >
               <h2>{isSignUp ? 'Регистрация' : 'Вход'}</h2>
             </ModalTtl>
             <ModalFormLogin id="formLogIn" action="#" onSubmit={handleSubmit}>
@@ -107,6 +131,7 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
                   placeholder="Имя"
                   value={formData.name}
                   onChange={handleChange}
+                  $error={errors.name}
                 />
               )}
               <ModalInput
@@ -116,6 +141,7 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
                 placeholder="Эл. почта"
                 value={formData.login}
                 onChange={handleChange}
+                $error={errors.login}
               />
               <ModalInput
                 type="password"
@@ -124,8 +150,8 @@ const AuthForm = ({ isSignUp, setIsAuth }) => {
                 placeholder="Пароль"
                 value={formData.password}
                 onChange={handleChange}
+                $error={errors.password}
               />
-              <p style={{ color: 'red' }}>{error}</p>
               <ModalBtnEnter>
                 {isSignUp ? 'Зарегистрироваться' : 'Войти'}
               </ModalBtnEnter>

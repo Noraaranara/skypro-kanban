@@ -4,8 +4,6 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: scroll;
-  background-color: #eaeef6;
 `;
 
 export const Container = styled.div`
@@ -33,12 +31,10 @@ export const Modal = styled.div`
 export const ModalBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
   max-width: 368px;
   width: 100%;
   padding: 50px 60px;
   border-radius: 10px;
-  border: 0.7px solid #d4dbe5;
 
   @media screen and (max-width: 375px) {
     max-width: 368px;
@@ -77,9 +73,12 @@ export const ModalInput = styled.input`
   width: 100%;
   min-width: 100%;
   border-radius: 8px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border: 0.7px solid
+    ${({ $error }) => ($error ? '#F84D4D' : 'rgba(148, 166, 190, 0.4)')};
+  color: ${({ $theme }) => ($theme === 'light' ? '#000' : '#fff')};
   outline: none;
   padding: 10px 8px;
+  background-color: transparent;
 
   &::-moz-placeholder {
     font-family: 'Roboto', sans-serif;

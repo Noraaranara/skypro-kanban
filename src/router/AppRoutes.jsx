@@ -8,32 +8,24 @@ import PopExitPage from '../pages/PopExit';
 import NotFoundPage from '../pages/NotFound';
 import SignInPage from '../pages/SignIn';
 import SignUpPage from '../pages/SignUp';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../context/contextApi';
 
 export const AppRoutes = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const { user } = useContext(AuthContext);
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<PrivateRoute isAuth={isAuth} />}>
-          <Route
-            path={ROUTER.main}
-            element={<MainPage setIsAuth={setIsAuth} />}
-          >
+        <Route element={<PrivateRoute isAuth={!!user} />}>
+          <Route path={ROUTER.main} element={<MainPage />}>
             <Route path={ROUTER.newCard} element={<PopNewCardPage />} />
             <Route path={ROUTER.popCardDynamic} element={<PopBrowsePage />} />
-            <Route
-              path={ROUTER.popExit}
-              element={<PopExitPage setIsAuth={setIsAuth} />}
-            />
+            <Route path={ROUTER.popExit} element={<PopExitPage />} />
           </Route>
         </Route>
-        <Route
-          path={ROUTER.signIn}
-          element={<SignInPage setIsAuth={setIsAuth} />}
-        />
+        <Route path={ROUTER.signIn} element={<SignInPage />} />
         <Route path={ROUTER.signUp} element={<SignUpPage />} />
-        <Route path={ROUTER.notFound} element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

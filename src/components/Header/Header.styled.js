@@ -36,8 +36,6 @@ export const Block = styled.div`
   padding: 0 10px;
 `;
 export const Logo = styled.div`
-  display: ${({ $dark }) => ($dark ? 'none' : 'block')};
-
   img {
     width: 85px;
   }
@@ -82,13 +80,29 @@ export const Btn = styled.button`
   }
 `;
 
-export const Button = styled.button`
+export const SUser = styled.a`
+  height: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 20px;
+
   &:hover {
-    background-color: #33399b;
-    color: #ffffff;
+    color: #33399b;
   }
 
-  &:hover a {
-    color: #ffffff;
+  svg {
+    display: block;
+    width: 7px;
+    height: 4px;
+    margin: 3px 0 0 5px;
+    padding: 0;
+  }
+
+  &:hover::after {
+    border-left-color: #33399b;
+    border-bottom-color: #33399b;
   }
 `;

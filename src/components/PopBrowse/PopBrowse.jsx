@@ -1,106 +1,243 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Calendar from '../Calendar/Calendar';
 import { ROUTER } from '../../router/router';
-import { useContext, useMemo } from 'react';
+import { useContext, useState } from 'react';
 import cardList from '../../data';
-import { AuthContext, TasksContext } from '../../context/contextApi';
+import {
+  AuthContext,
+  TasksContext,
+  ThemeContext,
+} from '../../context/contextApi';
+import {
+  SBBtn,
+  SBGroup,
+  SBlock,
+  SBtn,
+  SClose,
+  SContainer,
+  SContent,
+  SFArea,
+  SFBlock,
+  SForm,
+  SInput,
+  SPopBrowse,
+  SSBtn,
+  SSParag,
+  SStatus,
+  SSTheme,
+  SSThemes,
+  STitle,
+  STop,
+  SWrap,
+} from './PopBrowse.styled';
+import { toast } from 'react-toastify';
 
 function PopBrowse() {
   const { id } = useParams();
-  const { tasks, deleteTask } = useContext(TasksContext);
+  const { tasks, deleteTask, updateTask } = useContext(TasksContext);
   const { user } = useContext(AuthContext);
   const task = tasks.find((task) => task._id === id);
   const navigate = useNavigate();
+  const [error, setError] = useState('');
+  const { theme } = useContext(ThemeContext);
 
   const canEdit = task && task.authorId === user.id;
+
+  const handleDelete = async () => {
+    try {
+      await deleteTask(task._id);
+      toast.success('Задача удалена');
+      navigate(ROUTER.main);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const themeClassMap = {
+    'Web Design': '_orange',
+    Research: '_green',
+    Copywriting: '_purple',
+  };
+  const themeClass = themeClassMap[task?.topic] || '_gray';
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [status, setStatus] = useState(task?.status || 'Без статуса');
+  const [title, setTitle] = useState(task?.title || 'Новая задача');
+  const [description, setDescription] = useState(task?.description);
+  const [date, setDate] = useState(task?.date);
+
+  const statuses = [
+    'Без статуса',
+    'Нужно сделать',
+    'В работе',
+    'Тестирование',
+    'Готово',
+  ];
+
+  const handleSave = async () => {
+    if (!title.trim() || !description.trim()) {
+      toast.warning('Заполните все поля');
+      return;
+    }
+    try {
+      await updateTask(task._id, {
+        ...task,
+        status,
+        title: title.trim(),
+        description: description.trim(),
+        date,
+      });
+
+      toast.success('Изменения сохранены');
+      navigate(ROUTER.main);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const handleCancel = () => {
+    setStatus(task.status);
+    setTitle(task.title);
+    setDescription(task.description);
+    setDate(task.date);
+
+    setIsEditing(false);
+  };
+
   return (
-    <div className="pop-browse" id="popBrowse">
-      <div className="pop-browse__container">
-        <div className="pop-browse__block">
-          <div className="pop-browse__content">
-            <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Название задачи</h3>
-
-              <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">Web Design</p>
-              </div>
-            </div>
-
-            <div className="pop-browse__status status">
-              <p className="status__p subttl">Статус</p>
-
-              <div className="status__themes">
-                <div className="status__theme _hide">
-                  <p>Без статуса</p>
-                </div>
-
-                <div className="status__theme _gray">
-                  <p>Нужно сделать</p>
-                </div>
-
-                <div className="status__theme _hide">
-                  <p>В работе</p>
-                </div>
-
-                <div className="status__theme _hide">
-                  <p>Тестирование</p>
-                </div>
-
-                <div className="status__theme _hide">
-                  <p>Готово</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="pop-browse__wrap">
-              <form className="pop-browse__form form-browse">
-                <div className="form-browse__block">
-                  <label>Описание задачи</label>
-
-                  <textarea
-                    className="form-browse__area"
-                    readOnly
-                    placeholder="Введите описание задачи..."
-                  />
-                </div>
-              </form>
-
-              <Calendar />
-            </div>
-
-            <div className="theme-down__categories theme-down">
-              <p className="categories__p subttl">Категория</p>
-
-              <div className="categories__theme _orange _active-category">
-                <p>Web Design</p>
-              </div>
-            </div>
-
-            <div className="pop-browse__btn-browse">
-              <div className="btn-group">
-                <button className="btn-browse__edit _btn-bor _hover03">
-                  Редактировать задачу
-                </button>
-
-                <button
-                  onClick={() => deleteTask(task._id)}
-                  className="btn-browse__delete _btn-bor _hover03"
+    <SPopBrowse id="popBrowse">
+      <SContainer>
+        <SBlock
+          style={{
+            border:
+              theme === 'light'
+                ? '0.7px solid #d4dbe5'
+                : 'border: 0.7px solid #4E5566',
+            backgroundColor: theme === 'light' ? '#ffffff' : '#20202C',
+          }}
+        >
+          <SContent>
+            <STop>
+              {isEditing ? (
+                <SInput
+                  style={{
+                    color: theme === 'light' ? '#000' : '#fff',
+                  }}
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              ) : (
+                <STitle
+                  style={{
+                    color: theme === 'light' ? '#000' : '#fff',
+                  }}
                 >
-                  Удалить задачу
-                </button>
-              </div>
+                  {title}
+                </STitle>
+              )}
 
-              <Link
-                to={ROUTER.main}
-                className="btn-browse__close _btn-bg _hover01"
+              <div
+                className={`categories__theme theme-top ${themeClass} _active-category`}
               >
-                Закрыть
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                <p className={themeClass}>{task?.topic}</p>
+              </div>
+            </STop>
+
+            <SStatus>
+              <SSParag
+                style={{
+                  color: theme === 'light' ? '#000' : '#fff',
+                }}
+              >
+                Статус
+              </SSParag>
+
+              <SSThemes>
+                {!isEditing ? (
+                  <SSTheme
+                    style={{
+                      color: theme === 'light' ? '#fff' : '#151419',
+                    }}
+                  >
+                    <p>{status}</p>
+                  </SSTheme>
+                ) : (
+                  statuses.map((item) => (
+                    <SSBtn
+                      key={item}
+                      type="button"
+                      onClick={() => setStatus(item)}
+                      $active={status === item}
+                      $theme={theme}
+                    >
+                      <p>{item}</p>
+                    </SSBtn>
+                  ))
+                )}
+              </SSThemes>
+            </SStatus>
+
+            <SWrap>
+              <SForm>
+                <SFBlock>
+                  <label
+                    style={{
+                      color: theme === 'light' ? '#000' : '#fff',
+                    }}
+                  >
+                    Описание задачи
+                  </label>
+
+                  <SFArea
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    readOnly={!isEditing}
+                    $theme={theme}
+                    style={{
+                      background: theme === 'light' ? '#eaeef6' : '#151419',
+                      color: theme === 'light' ? '#000' : '#fff',
+                      border:
+                        theme === 'light'
+                          ? '0.7px solid rgba(148, 166, 190, 0.4)'
+                          : '0.7px solid #151419',
+                    }}
+                  />
+                </SFBlock>
+              </SForm>
+
+              <Calendar date={date} setDate={setDate} isEditing={isEditing} />
+            </SWrap>
+
+            <SBtn>
+              <SBGroup>
+                {isEditing ? (
+                  <>
+                    <SBBtn
+                      style={{
+                        background: theme === 'light' ? '#565EEF' : '#565EEF',
+                        color: theme === 'light' ? '#fff' : '#fff',
+                      }}
+                      onClick={handleSave}
+                    >
+                      Сохранить
+                    </SBBtn>
+                    <SBBtn onClick={handleCancel}>Отменить</SBBtn>
+                  </>
+                ) : (
+                  <SBBtn onClick={() => setIsEditing(true)}>
+                    Редактировать задачу
+                  </SBBtn>
+                )}
+
+                <SBBtn onClick={handleDelete}>Удалить задачу</SBBtn>
+              </SBGroup>
+
+              <SClose to={ROUTER.main}>Закрыть</SClose>
+            </SBtn>
+          </SContent>
+        </SBlock>
+      </SContainer>
+    </SPopBrowse>
   );
 }
 

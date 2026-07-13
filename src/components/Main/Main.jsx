@@ -2,14 +2,15 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import cardList from '../../data';
 import Column from '../Column/Column';
 import Loader from '../Loader/Loader';
-import { Block, Container, Content, MainEl } from './Main.styled';
+import { Block, Container, Content, MainEl, SEmpty } from './Main.styled';
 import Header from '../Header/Header';
 import PopBrowse from '../PopBrowse/PopBrowse';
 import PopNewCard from '../PopNewCard/PopNewCard';
 import PopUser from '../PopUser/PopUser';
 import { data, Outlet } from 'react-router-dom';
 import { fetchCard } from '../../services/api';
-import { TasksContext } from '../../context/contextApi';
+import { TasksContext, ThemeContext } from '../../context/contextApi';
+import { toast } from 'react-toastify';
 
 function Main() {
   const columns = [
@@ -24,24 +25,25 @@ function Main() {
 
   const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-  return loading ? (
-    <Loader />
-  ) : (
+  const { theme } = useContext(ThemeContext);
+
+  return (
     <div className="wrapper">
       <Header />
-      <MainEl>
+      <MainEl style={{ background: theme === 'light' ? '#eaeef6' : '#151419' }}>
         <Container>
           <Block>
             <Content>
               {columns.map((column) => (
                 <Column
                   key={column.status}
+                  loading={loading}
                   title={column.title}
                   cards={tasks.filter((task) => task.status === column.status)}
                 />
               ))}
             </Content>
-            {error && <p>{error}</p>}
+            {!loading && tasks.length === 0 && <SEmpty>Новых задач нет</SEmpty>}
           </Block>
         </Container>
       </MainEl>

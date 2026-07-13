@@ -1,42 +1,57 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { ROUTER } from '../../router/router';
 import { useContext } from 'react';
-import { AuthContext } from '../../context/contextApi';
+import { AuthContext, ThemeContext } from '../../context/contextApi';
+import {
+  SBlock,
+  SContainer,
+  SExit,
+  SForm,
+  SGroup,
+  SNo,
+  STitle,
+  SYes,
+} from './PopExit.styled';
 
-function PopExit({ setIsAuth }) {
+function PopExit() {
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
   function handleLogout(e) {
     e.preventDefault();
     logout();
-    setIsAuth(false);
     navigate(ROUTER.signIn);
   }
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className="pop-exit" id="popExit">
-      <div className="pop-exit__container">
-        <div className="pop-exit__block">
-          <div className="pop-exit__ttl">
+    <SExit id="popExit">
+      <SContainer>
+        <SBlock
+          style={{
+            background: theme === 'light' ? '#ffffff' : '#20202C',
+            border:
+              theme === 'light' ? '0.7px solid #d4dbe5' : '0.7px solid #4E5566',
+          }}
+        >
+          <STitle
+            style={{
+              color: theme === 'light' ? '#000' : '#fff',
+            }}
+          >
             <h2>Выйти из аккаунта?</h2>
-          </div>
-          <form className="pop-exit__form" id="formExit" action="#">
-            <div className="pop-exit__form-group">
-              <button
-                onClick={handleLogout}
-                className="pop-exit__exit-yes _hover01"
-                type="button"
-                id="exitYes"
-              >
+          </STitle>
+          <SForm>
+            <SGroup>
+              <SYes onClick={handleLogout} type="button" id="exitYes">
                 Да, выйти
-              </button>
-              <button className="pop-exit__exit-no _hover03" id="exitNo">
+              </SYes>
+              <SNo id="exitNo">
                 <Link to={ROUTER.main}>Нет, остаться</Link>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+              </SNo>
+            </SGroup>
+          </SForm>
+        </SBlock>
+      </SContainer>
+    </SExit>
   );
 }
 
