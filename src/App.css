@@ -44,6 +44,10 @@ body,
   color: #000000;
 }
 
+textarea {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
 .wrapper {
   max-width: 100%;
   width: 100vw;

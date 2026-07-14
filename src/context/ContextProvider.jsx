@@ -27,14 +27,14 @@ export const TasksContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  const { user } = useContext(AuthContext);
 
   const loadTasks = async () => {
     setLoading(true);
     setError('');
     try {
       const tasks = await fetchCard({
-        token: userInfo.token,
+        token: user.token,
       });
       setTasks(tasks);
     } catch (error) {
@@ -47,7 +47,7 @@ export const TasksContextProvider = ({ children }) => {
 
   const addTask = async (task) => {
     await postCard({
-      token: userInfo.token,
+      token: user.token,
       card: task,
     });
     await loadTasks();
@@ -55,7 +55,7 @@ export const TasksContextProvider = ({ children }) => {
 
   const deleteTask = async (id) => {
     await deleteCard({
-      token: userInfo.token,
+      token: user.token,
       id,
     });
     await loadTasks();
@@ -63,7 +63,7 @@ export const TasksContextProvider = ({ children }) => {
 
   const updateTask = async (id, card) => {
     await editCard({
-      token: userInfo.token,
+      token: user.token,
       id,
       card,
     });
