@@ -160,11 +160,7 @@ function PopNewCard() {
                 </div>
               </SCThemes>
             </SCategories>
-            <SBtn
-              disabled={!taskName.trim()}
-              onClick={onAddTask}
-              id="btnCreate"
-            >
+            <SBtn onClick={onAddTask} id="btnCreate">
               Создать задачу
             </SBtn>
           </SContent>

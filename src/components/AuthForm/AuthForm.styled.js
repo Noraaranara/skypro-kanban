@@ -75,7 +75,6 @@ export const ModalInput = styled.input`
   border-radius: 8px;
   border: 0.7px solid
     ${({ $error }) => ($error ? '#F84D4D' : 'rgba(148, 166, 190, 0.4)')};
-  color: ${({ $theme }) => ($theme === 'light' ? '#000' : '#fff')};
   outline: none;
   padding: 10px 8px;
   background-color: transparent;
